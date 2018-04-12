@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
 
 class HomeCard extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return new Center(
-
       // Center is a layout widget. It takes a single child and positions it
       // in the middle of the parent.
 
       child: new Column(
-
         // Column is also layout widget. It takes a list of children and
         // arranges them vertically. By default, it sizes itself to fit its
         // children horizontally, and tries to be as tall as its parent.
@@ -33,30 +30,35 @@ class HomeCard extends StatelessWidget {
             child: new Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                new Placeholder(
-                  color: Colors.black,
-                  fallbackHeight: 40.0,
-                  fallbackWidth: 40.0,
-                  strokeWidth: 3.0,
-                ),
-                new Placeholder(
-                  color: Colors.black,
-                  fallbackHeight: 40.0,
-                  fallbackWidth: 40.0,
-                  strokeWidth: 3.0,
-                ),
-                new Placeholder(
-                  color: Colors.black,
-                  fallbackHeight: 40.0,
-                  fallbackWidth: 40.0,
-                  strokeWidth: 3.0,
-                ),
-                new Placeholder(
-                  color: Colors.black,
-                  fallbackHeight: 40.0,
-                  fallbackWidth: 40.0,
-                  strokeWidth: 3.0,
-                ),
+                new Padding(
+                    padding: new EdgeInsets.all(8.0),
+
+                    child: new Image(
+                      image: new AssetImage("images/bear/Bear4.png"),
+                      height: 60.0,
+                      width: 60.0,
+                    )),
+                new Padding(
+                    padding: new EdgeInsets.all(8.0),
+                    child: new Image(
+                      image: new AssetImage("images/bear/Bear3.png"),
+                      height: 60.0,
+                      width: 60.0,
+                    )),
+                new Padding(
+                    padding: new EdgeInsets.all(8.0),
+                    child: new Image(
+                      image: new AssetImage("images/bear/Bear2.png"),
+                      height: 60.0,
+                      width: 60.0,
+                    )),
+                new Padding(
+                    padding: new EdgeInsets.all(8.0),
+                    child: new Image(
+                      image: new AssetImage("images/bear/Bear1.png"),
+                      height: 60.0,
+                      width: 60.0,
+                    )),
               ],
             ),
           ),

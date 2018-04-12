@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:feel_app/homeCard.dart';
 import 'package:feel_app/settingsCard.dart';
+import 'package:feel_app/journalCard.dart';
+import 'package:feel_app/reportCard.dart';
+import 'package:feel_app/contactsCard.dart';
+import 'package:feel_app/resourcesCard.dart';
+import 'package:feel_app/theme.dart';
 
 void main() => runApp(new MyApp());
 
@@ -10,7 +15,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
       title: 'Feel',
-      theme: new ThemeData(
+      theme: feelThemeData,
+      /*
+      new ThemeData(
         // This is the theme of your application.
         //
         // Try running your application with "flutter run". You'll see the
@@ -20,10 +27,17 @@ class MyApp extends StatelessWidget {
         // or press Run > Flutter Hot Reload in IntelliJ). Notice that the
         // counter didn't reset back to zero; the application is not restarted.
         primarySwatch: Colors.deepOrange,
+        backgroundColor: new Color.fromARGB(255, 110, 196, 217),
+        scaffoldBackgroundColor: new Color.fromARGB(255, 110, 196, 217),
       ),
+      */
       home: new MyHomePage(title: 'Feel'),
       routes: <String, WidgetBuilder> {
         '/settings': (BuildContext context) => new SettingsCard(title: 'Feel settings'),
+        '/journal': (BuildContext context) => new JournalCard(title: 'Feel journal'),
+        '/reports': (BuildContext context) => new ReportCard(title: 'Feel reports'),
+        '/contacts': (BuildContext context) => new ContactsCard(title: 'Feel contacts'),
+        '/resources': (BuildContext context) => new ResourcesCard(title: 'Feel resources'),
       },
     );
   }
@@ -50,12 +64,12 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 
   Widget _currentCard = new HomeCard();
+  int _currentIndex = 0;
+  int _previousIndex = 0;
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
+
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
@@ -70,6 +84,30 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: _openSettings,
           )
         ],
+      ),
+
+      bottomNavigationBar: new BottomNavigationBar(items: <BottomNavigationBarItem>[
+          new BottomNavigationBarItem(icon: new Icon(Icons.home), title: new Text("Home")),
+          new BottomNavigationBarItem(icon: new Icon(Icons.assessment), title: new Text("Reports")),
+          new BottomNavigationBarItem(icon: new Icon(Icons.library_books), title: new Text("Journal")),
+          new BottomNavigationBarItem(icon: new Icon(Icons.people), title: new Text("Contacts")),
+          new BottomNavigationBarItem(icon: new Icon(Icons.link), title: new Text("Resources")),
+        ],
+        type: BottomNavigationBarType.fixed,
+        currentIndex: _currentIndex,
+        onTap: (int index){
+          _previousIndex = _currentIndex;
+          setState(() {
+            _currentIndex = index;
+            switch (index) {
+              //case 0: Navigator.of(context).pushNamed("/"); break;
+              case 1: Navigator.of(context).pushNamed("/reports"); break;
+              case 2: Navigator.of(context).pushNamed("/journal"); break;
+              case 3: Navigator.of(context).pushNamed("/contacts"); break;
+              case 4: Navigator.of(context).pushNamed("/resources"); break;
+            }
+          });
+        },
       ),
       body: _currentCard,
     );
