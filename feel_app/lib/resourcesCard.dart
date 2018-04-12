@@ -1,17 +1,22 @@
+import 'package:feel_app/feelNavigationBar.dart';
 import 'package:flutter/material.dart';
 
 class ResourcesCard extends StatelessWidget {
 
-  final String title;
-
-  ResourcesCard({Key key, this.title}) : super(key: key);
+  ResourcesCard({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+
+    void _openSettings() {
+      Navigator.of(context).pushNamed("/settings");
+    }
+
     return new Scaffold(
         appBar: new AppBar(
-          title: new Text(title),
+          title: new Text("Resources"),
         ),
+        bottomNavigationBar: new FeelNavigationBar(index: 4),
         body: new Center(
           child: new Text("Resources go here"),
         )

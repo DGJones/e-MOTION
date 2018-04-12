@@ -1,13 +1,28 @@
+import 'package:feel_app/feelNavigationBar.dart';
 import 'package:flutter/material.dart';
 
 class HomeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new Center(
-      // Center is a layout widget. It takes a single child and positions it
-      // in the middle of the parent.
 
-      child: new Column(
+    void _openSettings() {
+      Navigator.of(context).pushNamed("/settings");
+    }
+
+    return new Scaffold(
+        appBar: new AppBar(
+          title: new Text("Home"),
+          actions: <Widget>[
+            new IconButton(
+              icon: new Icon(Icons.settings),
+              onPressed: _openSettings,
+            )
+          ],
+        ),
+        bottomNavigationBar: new FeelNavigationBar(index: 0),
+        body: new Center(
+
+        child: new Column(
         // Column is also layout widget. It takes a list of children and
         // arranges them vertically. By default, it sizes itself to fit its
         // children horizontally, and tries to be as tall as its parent.
@@ -65,6 +80,6 @@ class HomeCard extends StatelessWidget {
           new Text("Today?")
         ],
       ),
-    );
+    ));
   }
 }
