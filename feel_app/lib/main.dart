@@ -6,7 +6,6 @@ import 'package:feel_app/reportCard.dart';
 import 'package:feel_app/contactsCard.dart';
 import 'package:feel_app/resourcesCard.dart';
 import 'package:feel_app/theme.dart';
-import 'package:feel_app/feelNavigationBar.dart';
 
 void main() => runApp(new MyApp());
 

@@ -15,6 +15,12 @@ class ResourcesCard extends StatelessWidget {
     return new Scaffold(
         appBar: new AppBar(
           title: new Text("Resources"),
+          actions: <Widget>[
+            new IconButton(
+              icon: new Icon(Icons.settings),
+              onPressed: _openSettings,
+            )
+          ],
         ),
         bottomNavigationBar: new FeelNavigationBar(index: 4),
         body: new Center(
